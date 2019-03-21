@@ -36,7 +36,10 @@ jobs:
       - run:
           name: run_autopkg_list_repos
           command: /usr/local/bin/autopkg list-recipes
-
+      - run:
+          name: run_autopkg_run_recipies
+          command: /usr/local/bin/autopkg run Firefox.munki
+          
 workflows:
   version: 2
   build-test-run:
