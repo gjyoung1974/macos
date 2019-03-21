@@ -16,7 +16,7 @@ jobs:
           command: pkgutil --expand ./autopkg-1.0.4.pkg ./autopkg
       - run:
           name: run_autopkg_update_munki
-          command: echo "Hello World"
+          command: installer -pkg ./autopkg-1.0.4.pkg -target /
 
 workflows:
   version: 2
