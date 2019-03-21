@@ -18,6 +18,7 @@ jobs:
           name: Setup Environment Variables
           command: |
             echo 'export MUNKI_REPO="file:///tmp/munki"' >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: create_repo
           command: mkdir /tmp/munki
