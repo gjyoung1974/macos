@@ -15,8 +15,11 @@ jobs:
           name: install_autopkg
           command: sudo installer -pkg ./autopkg-1.0.4.pkg -target /
       - run:
-          name: run_autopkg_update_munki_repos
-          command: /usr/local/bin/autopkg repo-list
+          name: run_autopkg_fetch_repos
+          command: /usr/local/bin/autopkg repo-add https://github.com/autopkg/recipes.git
+      - run:
+          name: run_autopkg_list_repos
+          command: /usr/local/bin/autopkg list-recipes
 
 workflows:
   version: 2
