@@ -12,50 +12,12 @@ jobs:
             curl https://github.com/autopkg/autopkg/releases/download/v1.0.4/autopkg-1.0.4.pkg > ./autopkg-1.0.4.pkg
       # | bash -s cf
       - run:
-          name: Echo HelloWorld
-          # command: pod install --verbose
-          # command: echo "Hello World!"
-          command: uname -a
-
-      # - run:
-      #     name: Build and run tests
-      #     command: fastlane scan
-      #     environment:
-      #       SCAN_DEVICE: iPhone 8
-      #       SCAN_SCHEME: WebTests
-
-      # - store_test_results:
-      #     path: test_output/report.xml
-      # - store_artifacts:
-      #     path: /tmp/test-results
-      #     destination: scan-test-results
-      # - store_artifacts:
-      #     path: ~/Library/Logs/scan
-      #     destination: scan-logs
-
-  # swiftlint:
-  #   docker:
-  #     - image: dantoml/swiftlint:latest
-  #   steps:
-  #     - checkout
-  #     - run: swiftlint lint --reporter junit | tee result.xml
-  #     - store_artifacts:
-  #         path: result.xml
-  #     - store_test_results:
-  #         path: result.xml
-
-  # danger:
-  #   docker:
-  #     - image: dantoml/danger:latest
-  #   steps:
-  #     - checkout
-  #     - run: danger
+          name: extract_autopkg
+          command: pkgutil –expand ./autopkg-1.0.4.pkg ./autopkg
 
 workflows:
   version: 2
   build-test-lint:
     jobs:
-      # - swiftlint
-      # - danger
       - build-and-test
       
