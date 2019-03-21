@@ -7,17 +7,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Fetch CocoaPods Specs
+          name: fetch_autopkg
           command: |
             curl https://github.com/autopkg/autopkg/releases/download/v1.0.4/autopkg-1.0.4.pkg > ./autopkg-1.0.4.pkg
-      # | bash -s cf
       - run:
           name: extract_autopkg
           command: pkgutil –expand ./autopkg-1.0.4.pkg ./autopkg
+      - run:
+          name: run_autopkg_update_munki
+          command: echo "Hello World"
 
 workflows:
   version: 2
   build-test-lint:
     jobs:
       - build-and-test
-      
