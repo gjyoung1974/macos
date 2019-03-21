@@ -6,12 +6,13 @@ jobs:
 
     steps:
       - checkout
-      # - run:
-      #     name: Fetch CocoaPods Specs
-      #     command: |
-      #       curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       - run:
-          name: Install CocoaPods
+          name: Fetch CocoaPods Specs
+          command: |
+            curl https://github.com/autopkg/autopkg/releases/download/v1.0.4/autopkg-1.0.4.pkg > ./autopkg-1.0.4.pkg
+      # | bash -s cf
+      - run:
+          name: Echo HelloWorld
           # command: pod install --verbose
           # command: echo "Hello World!"
           command: uname -a
