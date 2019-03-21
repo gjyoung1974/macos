@@ -15,9 +15,9 @@ jobs:
           name: install_munki
           command: sudo installer -pkg ./munkitools3-latest.pkg -target /
       - run: 
-            name: "Setup custom environment variables"
+            name: setup_munki_env_vars
             command: |
-              echo 'export MUNKI_REPO_VAR="file:///tmp/munki"' >> $MUNKI_REPO # Redirect MY_ENV_VAR into $BASH_ENV
+              echo 'export MUNKI_REPO_VAR="file:///tmp/munki"'' >> $MUNKI_REPO # Redirect MY_ENV_VAR into $BASH_ENV
       - run:
           name: create_repo
           command: mkdir /tmp/munki
