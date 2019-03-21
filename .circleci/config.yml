@@ -40,9 +40,10 @@ jobs:
           command: /usr/local/bin/autopkg list-recipes
       - run:
           name: run_autopkg_run_recipies
-          # command: /usr/local/bin/autopkg run Firefox.munki
+          command: sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls SoftwareRepoURL $MUNKI_REPO
           command: echo $MUNKI_REPO
-
+          command: /usr/local/bin/autopkg run Firefox.munki
+          
 workflows:
   version: 2
   build-test-run:
