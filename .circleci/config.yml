@@ -13,7 +13,16 @@ jobs:
             curl -L https://munkibuilds.org/munkitools3-latest.pkg > munkitools3-latest.pkg > ./munkitools3-latest.pkg
       - run:
           name: install_munki
-          command: sudo installer -pkg ./munkitools3-latest.pkg -target / 
+          command: sudo installer -pkg ./munkitools3-latest.pkg -target /
+      - run:
+          name: install_munki
+          command: sudo installer -pkg ./munkitools3-latest.pkg -target /
+      - run:
+          name: create_repo
+          command: mkdir /tmp/munki
+      - run:
+          name: configure_munki
+          command: sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls SoftwareRepoURL 'file:///tmp/munki'
       - run:
           name: fetch_autopkg
           command: |
@@ -33,3 +42,10 @@ workflows:
   build-test-run:
     jobs:
       - build-and-test
+
+# munkiimport --configure --repo_url=/Users/gyoung/src/macos/repo
+# Repo URL (example: afp://munki.example.com/repo): file:////Users/gyoung/src/macos/repo
+# pkginfo extension (Example: .plist):
+# pkginfo editor (examples: /usr/bin/vi or TextMate.app; leave empty to not open an editor after import):
+# Default catalog to use (example: testing):
+# Repo access plugin (defaults to FileRepo):
