@@ -27,7 +27,7 @@ jobs:
           command: sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls SoftwareRepoURL '/tmp/munki'
       - run:
           name: configure_munki_2
-          command: sudo /usr/bin/defaults write com.github.autopkg MUNKI_REPO '/tmp/munki'
+          command: defaults write com.github.autopkg MUNKI_REPO /tmp/munki
       - run:
           name: configure_munki_3
           command: sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls MUNKI_REPO '/tmp/munki'
