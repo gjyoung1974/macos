@@ -12,6 +12,9 @@ jobs:
           command: |
             curl -L https://munkibuilds.org/munkitools3-latest.pkg > munkitools3-latest.pkg > ./munkitools3-latest.pkg
       - run:
+          name: set_munki_repo
+          command: export MUNKI_REPO="file:///tmp/munki"
+      - run:
           name: install_munki
           command: sudo installer -pkg ./munkitools3-latest.pkg -target /
       - run:
@@ -39,7 +42,7 @@ jobs:
       - run:
           name: run_autopkg_run_recipies
           command: /usr/local/bin/autopkg run Firefox.munki
-          
+
 workflows:
   version: 2
   build-test-run:
