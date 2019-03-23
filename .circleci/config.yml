@@ -17,20 +17,9 @@ jobs:
       - run:
           name: create_repo_dir
           command: mkdir /tmp/munki
-      # - run:
-      #     name: Setup Environment Variables
-      #     command: |
-      #       echo 'export MUNKI_REPO="/tmp/munki"' >> $BASH_ENV
-      #       source $BASH_ENV
-      # - run:
-      #     name: configure_munki
-      #     command: sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls SoftwareRepoURL '/tmp/munki'
       - run:
           name: configure_munki
           command: defaults write com.github.autopkg MUNKI_REPO /tmp/munki
-      # - run:
-      #     name: configure_munki_3
-      #     command: sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls MUNKI_REPO '/tmp/munki'
       - run:
           name: fetch_autopkg
           command: |
@@ -44,9 +33,6 @@ jobs:
       - run:
           name: run_autopkg_list_repos
           command: /usr/local/bin/autopkg list-recipes
-      # - run:
-      #     name: run_config_munki_url
-      #     command: sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls SoftwareRepoURL $MUNKI_REPO
       - run:
           name: run_autopkg_run_recipies
           command: /usr/local/bin/autopkg run Firefox.munki
